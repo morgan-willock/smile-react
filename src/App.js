@@ -6,7 +6,6 @@ import Login from './Login'
 function App() {
   return (
     <Router>
-      
       <Switch>
         <Route exact path="/login-form">
           <Login />
