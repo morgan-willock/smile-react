@@ -1,26 +1,28 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-export default function Login() {
+export default function Register() {
     let error = ''
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
-    const [ registerSuccess, setRegisterSuccess ] = useState(false)
+    const [ registerSuccess, setRegisterSuccess ] = useState(null)
 
     function handleSubmit(e) {
-        alert('form was submitted')
         e.preventDefault()
+        if (email === "" || password === "") {
+            return alert('no email or password entered')
+        }
 
-        const uname = email
-        const pw = password
-        const user = { uname, pw }
+        const user = { email, password }
 
-        axios.post('http://localhost:8080/register', user)
+        axios.post('/register', user)
             .then(response => {
-                alert(response.data.register)
                 if(response.data.register === 'success') {
-                    alert('change state')
+                    alert('success')
                     setRegisterSuccess(true)
+                } else if (response.data.register === 'failed') {
+                    alert('email aleady taken')
+                    setRegisterSuccess(false)
                 }
             })
     }
@@ -44,6 +46,7 @@ export default function Login() {
                 <br/>
                 <br/>
                 Password: <input type="text" onChange={handlePasswordChange}/>
+                <p>{registerSuccess}</p>
                 <br/>
                 <br/>
                 <button>submit</button>
