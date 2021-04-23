@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default function Register() {
-    let error = ''
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('')
-    const [ registerSuccess, setRegisterSuccess ] = useState(null)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [registerSuccess, setRegisterSuccess] = useState(null)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -18,8 +17,7 @@ export default function Register() {
 
         axios.post('/register', user)
             .then(response => {
-                if(response.data.register === 'success') {
-                    alert('success')
+                if (response.data.register === 'success') {
                     setRegisterSuccess(true)
                 } else if (response.data.register === 'failed') {
                     alert('email aleady taken')
@@ -42,13 +40,13 @@ export default function Register() {
             Register:
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleEmailChange}/>
+                    <label htmlFor="exampleInputEmail1">Email address</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleEmailChange} />
                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={handlePasswordChange}/>
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={handlePasswordChange} />
                     <small id="passwordHelp" className="form-text text-muted">Must be over 6 char</small>
                 </div>
                 <button type="submit" className="btn btn-primary">Register</button>
@@ -56,6 +54,7 @@ export default function Register() {
                     <p className="register-login-link">Already a member? click here to login!</p>
                 </Link>
             </form>
+            {registerSuccess ? <Redirect to="/login" /> : ""}
         </div>
-        )
+    )
 }

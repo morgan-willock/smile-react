@@ -1,10 +1,12 @@
 import './App.css';
-import DayPickerContainer from './DayPickerContainer';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Register from './Register'
 import BootstrapLogin from './BootstrapLogin'
+import Dashboard from './Dashboard'
+import Logout from './Logout'
 import './BootstrapLogin.css'
 import './Register.css'
+import './DayPickerContainer.css'
 
 function App() {
   return (
@@ -15,6 +17,12 @@ function App() {
         </Route>
         <Route path="/login">
           <BootstrapLogin />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/logout">
+          <Logout />
         </Route>
       </Switch>
     </Router>

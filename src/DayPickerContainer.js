@@ -19,8 +19,7 @@ export default class DayPickerContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Smile.</h1>
+      <div className="daypicker-container">
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}

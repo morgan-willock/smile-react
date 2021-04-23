@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default function BootstrapLogin() {
-    let error = ''
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
-    // const [ registerSuccess, setRegisterSuccess ] = useState(null)
+    const [ loginSuccess, setLoginSuccess ] = useState(null)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -19,11 +18,9 @@ export default function BootstrapLogin() {
         axios.post('/login', user)
             .then(response => {
                 if(response.data.login === 'success') {
-                    alert('success')
-                    // setRegisterSuccess(true)
+                    setLoginSuccess(true)
                 } else if (response.data.login === 'failed') {
-                    alert('failed to authenticate')
-                    // setRegisterSuccess(false)
+                    setLoginSuccess(false)
                 }
             })
     }
@@ -42,12 +39,12 @@ export default function BootstrapLogin() {
             Login:
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label htmlFor="exampleInputEmail1">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleEmailChange}/>
                     <small id="emailHelp" className="form-text text-muted"></small>
                 </div>
                 <div className="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label htmlFor="exampleInputPassword1">Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={handlePasswordChange}/>
                     <small id="passwordHelp" className="form-text text-muted">Must be over 6 char</small>
                 </div>
@@ -56,6 +53,7 @@ export default function BootstrapLogin() {
                     <p className="register-login-link">Not a member? click here to register!</p>
                 </Link>
             </form>
+            {loginSuccess ? <Redirect to="/dashboard" /> : ""}
         </div>
         )
 }
