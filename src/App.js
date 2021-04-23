@@ -4,15 +4,16 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Register from './Register'
 import BootstrapLogin from './BootstrapLogin'
 import './BootstrapLogin.css'
+import './Register.css'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/register-form">
+        <Route exact path="/register">
           <Register />
         </Route>
-        <Route path="/bootstrap-login">
+        <Route path="/login">
           <BootstrapLogin />
         </Route>
       </Switch>

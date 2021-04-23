@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { Link } from "react-router-dom";
 
 export default function Register() {
     let error = ''
@@ -36,22 +37,25 @@ export default function Register() {
     }
 
     return (
-        <div>
-            <h1>Smile.</h1>
+        <div className="register-container">
+            <h1 className="smile-text-header">Smile.</h1>
             Register:
-            <br/>
-            <br/>
             <form onSubmit={handleSubmit}>
-                Email: <input type="email" onChange={handleEmailChange}/>
-                <br/>
-                <br/>
-                Password: <input type="text" onChange={handlePasswordChange}/>
-                <p>{registerSuccess}</p>
-                <br/>
-                <br/>
-                <button>submit</button>
+                <div className="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleEmailChange}/>
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div className="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={handlePasswordChange}/>
+                    <small id="passwordHelp" className="form-text text-muted">Must be over 6 char</small>
+                </div>
+                <button type="submit" className="btn btn-primary">Register</button>
+                <Link to="/login">
+                    <p className="register-login-link">Already a member? click here to login!</p>
+                </Link>
             </form>
-            {/* <Redirect /> */}
         </div>
         )
 }
