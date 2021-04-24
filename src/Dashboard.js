@@ -29,10 +29,6 @@ export default function Dashboard() {
                 : authorized 
                     ? <DayPickerContainer /> 
                     : <Redirect to="/login"/> }
-            {/* {authorized 
-                ? <DayPickerContainer /> 
-                : <Redirect to="/login"/>
-            } */}
         </div>
     )
 }
