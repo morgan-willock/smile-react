@@ -13,12 +13,7 @@ export default function Mood({ userId }) {
         // setMoodSelection(moodSelection)
         // setActivities(activities)
 
-        const todaysDate = new Date()
-        const todaysDateConverted = todaysDate.toLocaleDateString('en-US')
-
-        const mood = { userId, todaysDateConverted, moodSelection, activities }
-
-        console.log(mood)
+        const mood = { userId, moodSelection, activities }
 
         axios.post('/mood', mood)
             .then(response => {
@@ -32,10 +27,7 @@ export default function Mood({ userId }) {
 
     useEffect(() => {
 
-        const todaysDate = new Date()
-        const todaysDateConverted = todaysDate.toLocaleDateString('en-US')
-
-        const request = { userId, todaysDateConverted }
+        const request = { userId }
 
         axios.post('/verify-mood', request )
             .then(response => {
