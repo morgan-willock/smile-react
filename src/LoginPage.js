@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Link, Redirect } from "react-router-dom";
 
-export default function BootstrapLogin() {
+export default function LoginPage() {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ loginSuccess, setLoginSuccess ] = useState(null)
@@ -53,7 +53,7 @@ export default function BootstrapLogin() {
                     <p className="register-login-link">Not a member? click here to register!</p>
                 </Link>
             </form>
-            {loginSuccess ? <Redirect to="/dashboard" /> : ""}
+            {loginSuccess && <Redirect to="/dashboard" />}
         </div>
         )
 }

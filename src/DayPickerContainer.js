@@ -42,7 +42,9 @@ export default class DayPickerContainer extends React.Component {
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}
           modifiers={modifiers}
-          month={new Date(2018, 8)}
+          showOutsideDays
+          month={new Date(2018, 8)
+          }
         />
         <p>
           {this.state.selectedDay
@@ -51,6 +53,9 @@ export default class DayPickerContainer extends React.Component {
         </p>
         <p>
           {todaysDate.toLocaleDateString('en-GB')}
+        </p>
+        <p>
+          {this.props.userId}
         </p>
       </div>
     );

@@ -1,34 +1,39 @@
+import DayPickerContainer from './DayPickerContainer';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import DayPickerContainer from './DayPickerContainer';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
-export default function Dashboard() {
-    const [ authorized, setAuthorized ] = useState(false)
+export default function Dashboard({ userId }) {
     const [ loading, setLoading ] = useState(true)
+    const [ verifyTodaysMood, setVerifyTodaysMood ] = useState(false)
 
     useEffect(() => {
-        axios.get('/protected-route')
-                .then(response => {
-                    console.log(response.data.authorized)
-                    if(response.data.authorized === true) {
-                        console.log('success')
-                        setAuthorized(true)
-                    } else if (response.data.authorized === false) {
-                        console.log('you do not have permission to view this resource')
-                        setAuthorized(false)
-                    }
+
+        const todaysDate = new Date()
+        const todaysDateConverted = todaysDate.toLocaleDateString('en-US')
+
+        const request = { userId, todaysDateConverted }
+
+        axios.post('/verify-mood', request )
+            .then(response => {
+                if (response.data.message === 'success') {
                     setLoading(false)
-                })
-    }, [])
+                } else if (response.data.message === 'failed') {
+                    setVerifyTodaysMood(true)
+                    setLoading(false)
+                }
+            })
+    })
 
     return (
         <div>
             {loading    
                 ? <div>loading</div> 
-                : authorized 
-                    ? <DayPickerContainer /> 
-                    : <Redirect to="/login"/> }
+                : verifyTodaysMood
+                    ? <Redirect to='/mood'/>
+                    : <DayPickerContainer userId={userId} />
+            }
         </div>
     )
 }
+<Redirect to='/login'/>
