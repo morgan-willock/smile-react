@@ -1,18 +1,17 @@
-import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import GuardedRoute from './GuardedRoute'
-import Register from './Register'
-import LoginPage from './LoginPage'
-import Logout from './Logout'
-import Dashboard from './Dashboard'
-import Mood from './Mood'
-import EditMood from './EditMood'
-import './LoginPage.css'
-import './Register.css'
-import './DayPickerContainer.css'
+import GuardedRoute from "./components/GuardedRoute";
+import Register from "./components/Register";
+import LoginPage from "./components/LoginPage";
+import Logout from "./components/Logout";
+import Dashboard from "./components/Dashboard";
+import Mood from "./components/Mood";
+import EditMood from "./components/EditMood";
+import "./styles/App.css";
+import "./styles/LoginPage.css";
+import "./styles/Register.css";
+import "./styles/DayPickerContainer.css";
 
 function App() {
-
   return (
     <Router>
       <Switch>

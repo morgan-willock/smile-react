@@ -1,0 +1,23 @@
+/* .mood-details-header {
+
+} */
+
+.mood-details-selected-day {
+    margin-bottom: 5px;
+}
+
+.mood-rating-selected-day {
+    margin-bottom: 5px;
+}
+
+.mood-activities-selected-day {
+    margin-bottom: 5px;
+}
+
+.mood-details-activities-li {
+    margin-left: 2px;
+}
+
+.mood-details-activites-ul {
+    padding-left: 20px;
+}

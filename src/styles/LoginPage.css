@@ -11,3 +11,13 @@
    font-size: 80%;
    font-weight: 400;
 }
+
+.login-header {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: large;
+}
+
+.info-header {
+    font-size: smaller;
+}
