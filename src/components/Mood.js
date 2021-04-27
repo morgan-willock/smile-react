@@ -1,4 +1,5 @@
 import MoodForm from "./MoodForm";
+import Smile from "../components/Smile"
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
@@ -36,7 +37,11 @@ export default function Mood({ userId }) {
       {loading ? (
         <div>"loading"</div>
       ) : (
-        <MoodForm onFormChange={handleFormChanges} />
+        <div className="mood-input-form">
+          <Smile />
+          <p className="info-header">A simple mood tracker to keep you smiling</p>
+          <MoodForm onFormChange={handleFormChanges} />
+        </div>
       )}
       {redirectBool && <Redirect to="/dashboard" />}
     </div>

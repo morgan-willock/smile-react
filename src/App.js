@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import GuardedRoute from "./components/GuardedRoute";
 import Register from "./components/Register";
 import LoginPage from "./components/LoginPage";
@@ -31,6 +31,11 @@ function App() {
         <GuardedRoute path="/mood/:date" component={EditMood} />
         <GuardedRoute path="/mood" component={Mood} />
       </Switch>
+      <div className="logout-footer">
+        <Link to="/logout">
+          Logout
+        </Link>
+      </div>
     </Router>
   );
 }

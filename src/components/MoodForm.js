@@ -28,29 +28,64 @@ export default function MoodForm(props) {
 
   return (
     <div>
-      <h2>How are you feeling today?</h2>
       <MoodButtons click={handleMoodSelection}/>
-      <div className="form-check" onClick={handleActivitySelection}>
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value="relaxing"
-          id="flexCheckRelaxing"
-        ></input>
-        <label className="form-check-label" htmlFor="flexCheckRelaxing">
-          Relaxing
-        </label>
-      </div>
-      <div className="form-check" onClick={handleActivitySelection}>
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value="socialising"
-          id="flexCheckSocialising"
-        ></input>
-        <label className="form-check-label" htmlFor="flexCheckSocialising">
-          Socialising
-        </label>
+      <p className="info-header">Click a colour that represents your mood and select the activities you were doing.</p>
+      <div className="activity-check-boxes">
+        <div className="form-check" onClick={handleActivitySelection}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="Work"
+            id="flexCheckWork"
+          ></input>
+          <label className="form-check-label" htmlFor="flexCheckWork">
+            Work
+          </label>
+        </div>
+        <div className="form-check" onClick={handleActivitySelection}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="Social"
+            id="flexCheckSocial"
+          ></input>
+          <label className="form-check-label" htmlFor="flexCheckSocial">
+            Social
+          </label>
+        </div>
+        <div className="form-check" onClick={handleActivitySelection}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="Hobbies"
+            id="flexCheckHobbies"
+          ></input>
+          <label className="form-check-label" htmlFor="flexCheckHobbies">
+            Hobbies
+          </label>
+        </div>
+        <div className="form-check" onClick={handleActivitySelection}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="Excercise"
+            id="flexCheckExcercise"
+          ></input>
+          <label className="form-check-label" htmlFor="flexCheckExcercise">
+            Excercise
+          </label>
+        </div>
+        <div className="form-check" onClick={handleActivitySelection}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="Housework"
+            id="flexCheckSocialising"
+          ></input>
+          <label className="form-check-label" htmlFor="flexCheckHousework">
+            Housework
+          </label>
+        </div>
       </div>
       <button type="button" onClick={handleSubmit} className="btn btn-info">
         Enter

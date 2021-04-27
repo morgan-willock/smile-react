@@ -35,4 +35,3 @@ export default function Dashboard({ userId }) {
     </div>
   );
 }
-<Redirect to="/login" />;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import Smile from "./Smile.js";
@@ -33,6 +33,14 @@ export default function Register() {
   function handlePasswordChange(event) {
     setPassword(event.target.value);
   }
+
+  useEffect(() => {
+    axios.get('/protected-route').then((response) => {
+      if (response.data.authorized === true) {
+        setRegisterSuccess(true);
+      }
+    });
+  })
 
   return (
     <div className="register-container">

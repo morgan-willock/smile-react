@@ -1,0 +1,38 @@
+
+.mood-emoji-container {
+    width: 284px;
+    height: 47px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.single-emoji-container {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin-right: 4px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05);
+}
+
+.one {
+   background-color: #FF6C65;
+}
+
+.two {
+    background-color: #FFBF65;
+}
+
+.three {
+    background-color: #FFE765;
+}
+
+.four {
+    background-color: #46F482;
+}
+
+.five {
+    background-color: #40DCD4;
+}

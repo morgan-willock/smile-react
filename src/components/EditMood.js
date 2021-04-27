@@ -1,7 +1,9 @@
 import MoodForm from "./MoodForm";
+import Smile from "../components/Smile";
 import { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import axios from "axios";
+import '../styles/MoodInputForm.css'
 
 export default function EditMood({ userId }) {
   const [redirectBool, setRedirectBool] = useState(false);
@@ -26,9 +28,10 @@ export default function EditMood({ userId }) {
   });
 
   return (
-    <div>
-      <h1>edit mood</h1>
-      <h2>{date}</h2>
+    <div className="mood-input-form">
+      <Smile />
+      <p className="info-header">A simple mood tracker to keep you smiling</p>
+      <h4 className="edit-date">{date} </h4>
       {loading ? (
         <div>"loading"</div>
       ) : (

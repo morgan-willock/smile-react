@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import DayPicker from "react-day-picker";
 import MoodDetails from "./MoodDetails";
+import MoodEmoji from "../components/MoodEmoji"
 import "react-day-picker/lib/style.css";
 import Smile from "./Smile.js";
 
@@ -113,8 +114,9 @@ export default class DayPickerContainer extends React.Component {
           showOutsideDays
           month={new Date()}
         />
+        <MoodEmoji />
         <p>
-          {this.state.selectedDay ? "" : "Pick a day to view or edit your mood"}
+          {this.state.selectedDay ? "" : <p className="pick-a-day-text" >Pick a day to view or edit your mood</p> }
         </p>
         {this.state.selection && (
           <MoodDetails
