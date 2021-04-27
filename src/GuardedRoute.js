@@ -11,6 +11,8 @@ const GuardedRoute = ({ component: Component, ...rest }) => {
 
     useEffect(() => {
 
+        console.log(rest)
+
       axios.get('/protected-route')
               .then(response => {
                   if(response.data.authorized === true) {

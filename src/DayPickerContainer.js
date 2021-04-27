@@ -2,10 +2,7 @@ import React from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import axios from 'axios';
-
-// let modifiers = {
-//   ratingOne: [new Date(2021, 3, 20), new Date(2021, 3, 19), new Date(2021, 3, 18)],
-// };
+import MoodDetails from './MoodDetails'
 
 let modifiers = { 
   ratingOne: [],
@@ -16,23 +13,23 @@ let modifiers = {
  }
 
 const ratingOneStyle = `.DayPicker-Day--ratingOne {
-  background-color: orange;
+  background-color: #FF6C65;
   color: white;
 }`
 const ratingTwoStyle = `.DayPicker-Day--ratingTwo {
-  background-color: red;
+  background-color: #FFBF65;
   color: white;
 }`
 const ratingThreeStyle = `.DayPicker-Day--ratingThree {
-  background-color: green;
+  background-color: #FFE765;
   color: white;
 }`
 const ratingFourStyle = `.DayPicker-Day--ratingFour {
-  background-color: yellow;
+  background-color: #46F482;
   color: white;
 }`
 const ratingFiveStyle = `.DayPicker-Day--ratingFive {
-  background-color: blue;
+  background-color: #40DCD4;
   color: white;
 }`
 
@@ -45,20 +42,21 @@ function formatDate(inputDate) {
   return [year, month, day]
 }
 
-const todaysDate = new Date()
-
 export default class DayPickerContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
       selectedDay: null,
+      selection: null,
     };
   }
 
   handleDayClick(day, { selected }) {
+
     this.setState({
       selectedDay: selected ? undefined : day,
+      selection: selected ? false : true
     });
   }
 
@@ -71,6 +69,14 @@ export default class DayPickerContainer extends React.Component {
       .then(response => {
 
         const retrievedMoods = response.data
+
+        modifiers = { 
+          ratingOne: [],
+          ratingTwo: [],
+          ratingThree: [],
+          ratingFour: [],
+          ratingFive: [],
+         }
 
         retrievedMoods.forEach(mood => {
           let [ year, month, day] = formatDate(mood.input_date)
@@ -110,15 +116,14 @@ export default class DayPickerContainer extends React.Component {
         />
         <p>
           {this.state.selectedDay
-            ? this.state.selectedDay.toLocaleDateString('en-GB')
-            : 'Please select a day 👻'}
+            ? ''
+            : 'Pick a day to view or edit your mood'}
         </p>
-        <p>
-          {todaysDate.toLocaleDateString('en-GB')}
-        </p>
-        <p>
-          {this.props.userId}
-        </p>
+        {this.state.selection 
+          && <MoodDetails 
+            date={this.state.selectedDay}
+            userId={this.props.userId}
+            />}
       </div>
     );
   }
