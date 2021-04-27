@@ -105,8 +105,7 @@ export default class DayPickerContainer extends React.Component {
         <style>{ratingFourStyle}</style>
         <style>{ratingFiveStyle}</style>
         <Smile />
-        <p className="info-header">A simple mood tracker to keep you smiling</p>
-        <p className="login-header">One thing at a time and enjoy yourself</p>
+        <p className="dashboard-quote">One thing at a time and enjoy yourself</p>
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}

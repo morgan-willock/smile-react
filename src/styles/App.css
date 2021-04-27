@@ -19,8 +19,8 @@ body {
 
 .logout-footer {
   position: absolute;
-  bottom: 0;
   width: 100%;
   text-align: center;
+  margin-top: 50px;
   margin-bottom: 20px;
 }

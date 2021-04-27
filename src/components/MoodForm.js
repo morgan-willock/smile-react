@@ -68,11 +68,11 @@ export default function MoodForm(props) {
           <input
             className="form-check-input"
             type="checkbox"
-            value="Excercise"
-            id="flexCheckExcercise"
+            value="Exercise"
+            id="flexCheckExercise"
           ></input>
-          <label className="form-check-label" htmlFor="flexCheckExcercise">
-            Excercise
+          <label className="form-check-label" htmlFor="flexCheckExercise">
+            Exercise
           </label>
         </div>
         <div className="form-check" onClick={handleActivitySelection}>
