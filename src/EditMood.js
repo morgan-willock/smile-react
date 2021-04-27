@@ -17,8 +17,8 @@ export default function EditMood({ userId }) {
             .then(response => {
                 if (response.data.message === 'success') {
                     setRedirectBool(true)
-                } else if (response.data.message === 'failed') {
-                    console.log('failed')
+                } else if (response.data.message === 'updated') {
+                    setRedirectBool(true)
                 }
         })
     }
